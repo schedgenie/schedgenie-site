@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SchedGenie — AI-Powered Physician Scheduling</title>
+  <meta name="description" content="SchedGenie is an AI-powered physician scheduling platform with conversational setup, natural-language rule changes, and painless migration from legacy tools." />
+  <meta property="og:title" content="SchedGenie — AI-Powered Physician Scheduling" />
+  <meta property="og:description" content="Conversational scheduling for hospitals and clinics. Build fair, compliant schedules in minutes, not weeks." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://schedgenie.com/og-image.png" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%AA%84%3C/text%3E%3C/svg%3E" />
+
+  <!-- Tailwind CSS via CDN for quick start -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config for brand colors
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9', 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63'
+            },
+            ink: '#0b1220'
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(2, 132, 199, 0.12)'
+          }
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    /* Subtle animated gradient for the hero background */
+    .hero-bg {
+      background: radial-gradient(1200px 600px at 80% -20%, rgba(59,130,246,0.25), transparent 60%),
+                  radial-gradient(1000px 500px at -10% 20%, rgba(34,211,238,0.25), transparent 60%),
+                  linear-gradient(180deg, rgba(2,6,23,0.9), rgba(2,6,23,0.7));
+    }
+    .blur-blob { filter: blur(40px); opacity: .6 }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-brand-200 selection:text-ink">
+  <!-- Top bar -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-3">
+        <a href="#" class="flex items-center gap-3 group">
+          <!-- Inline logo (magic lamp + heartbeat) -->
+          <svg width="36" height="36" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 26c0 6 9 10 20 10s16-4 16-8-5-6-12-6H6z" fill="#06b6d4"/>
+            <path d="M11 22c4-5 9-8 15-8 7 0 13 5 13 11" stroke="#0b1220" stroke-width="2" stroke-linecap="round"/>
+            <path d="M17 30l3-6 3 4 3-7 3 6h6" stroke="#0b1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-xl font-semibold tracking-tight">SchedGenie</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="#features" class="hover:text-brand-600">Features</a>
+          <a href="#how" class="hover:text-brand-600">How it works</a>
+          <a href="#security" class="hover:text-brand-600">Security</a>
+          <a href="#contact" class="hover:text-brand-600">Contact</a>
+          <a href="#waitlist" class="inline-flex items-center rounded-xl bg-brand-600 px-4 py-2 text-white shadow-soft hover:bg-brand-700">Join waitlist</a>
+        </nav>
+        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center justify-center rounded-xl border border-slate-300 px-3 py-2">
+          <span class="sr-only">Open menu</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+      <div class="mx-auto max-w-7xl px-4 py-3 space-y-2 text-sm">
+        <a href="#features" class="block">Features</a>
+        <a href="#how" class="block">How it works</a>
+        <a href="#security" class="block">Security</a>
+        <a href="#contact" class="block">Contact</a>
+        <a href="#waitlist" class="block rounded-xl bg-brand-600 px-4 py-2 text-white text-center">Join waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative isolate overflow-hidden hero-bg text-white">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute -top-10 left-10 w-64 h-64 rounded-full bg-brand-400 blur-blob"></div>
+      <div class="absolute top-40 right-10 w-72 h-72 rounded-full bg-sky-500 blur-blob"></div>
+    </div>
+    <div class="mx-auto max-w-7xl px-6 pt-20 pb-28 lg:pt-28 lg:pb-36">
+      <div class="grid lg:grid-cols-2 items-center gap-10">
+        <div>
+          <h1 class="text-4xl sm:text-5xl font-bold leading-tight tracking-tight">Build fair, compliant physician schedules in minutes—not weeks.</h1>
+          <p class="mt-5 text-lg/8 text-slate-200 max-w-2xl">SchedGenie is an AI-powered scheduling platform for hospitals and clinics. Set it up by talking: define roles, services, FTE rules, and constraints in plain English. The system learns, adapts, and generates balanced schedules you can trust.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#waitlist" class="inline-flex items-center justify-center rounded-xl bg-white text-ink px-5 py-3 font-semibold shadow-soft hover:bg-slate-100">Request early access</a>
+            <a href="#demo" class="inline-flex items-center justify-center rounded-xl border border-white/40 px-5 py-3 font-semibold hover:bg-white/10">Watch 60s demo</a>
+          </div>
+          <p class="mt-4 text-sm text-slate-300">Launching pilot with Cardiology, expanding to multi-specialty soon.</p>
+        </div>
+        <div class="relative">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-3 shadow-2xl backdrop-blur">
+            <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1400&auto=format&fit=crop" alt="SchedGenie app preview" class="rounded-xl" />
+          </div>
+          <div class="absolute -bottom-6 -left-6 hidden sm:block rounded-2xl bg-white text-ink p-4 shadow-soft">
+            <p class="text-sm font-semibold">Conversational setup</p>
+            <p class="text-xs text-slate-600">“Add two weekend call teams and cap consecutive nights at 3.”</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos / social proof -->
+  <section class="bg-white border-b border-slate-200">
+    <div class="mx-auto max-w-7xl px-6 py-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 items-center gap-6 opacity-70">
+      <div class="text-center text-xs">HIPAA-aware</div>
+      <div class="text-center text-xs">Azure-native</div>
+      <div class="text-center text-xs">FastAPI</div>
+      <div class="text-center text-xs">PostgreSQL</div>
+      <div class="text-center text-xs">OpenAI API</div>
+      <div class="text-center text-xs">RBAC</div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="mx-auto max-w-7xl px-6 py-20">
+    <div class="text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl font-bold tracking-tight">Why teams pick SchedGenie</h2>
+      <p class="mt-3 text-slate-600">Built for academic departments and health systems that need flexibility, fairness, and auditability.</p>
+    </div>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-brand-100 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold">Conversational setup</h3>
+        </div>
+        <p class="mt-3 text-slate-600">Describe services, FTEs, and rules in plain language. Tweak the schedule by typing “Swap Friday call with Patel” and it understands.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-brand-100 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold">Fairness you can audit</h3>
+        </div>
+        <p class="mt-3 text-slate-600">Transparent tallies for nights, weekends, clinics, and call. Export reports for division meetings and credentialing.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-brand-100 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a2 2 0 012-2h2a2 2 0 012 2v2m-6 4h6a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold">Migration from QGenda</h3>
+        </div>
+        <p class="mt-3 text-slate-600">Import existing schedules, analyze rules, and recreate them with less friction. Keep what works, fix what doesn’t.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-brand-100 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-7 4h8m-9 4h10M5 8h14"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold">Role-based access control</h3>
+        </div>
+        <p class="mt-3 text-slate-600">Admins, chiefs, schedulers, and clinicians each get the right knobs and dashboards. Audit logs keep everyone honest.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-brand-100 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.79-3 4s1.343 4 3 4 3-1.79 3-4-1.343-4-3-4z"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold">Voice commands</h3>
+        </div>
+        <p class="mt-3 text-slate-600">Hands busy? Speak your changes. “Add ACHD clinic for Dr. Lee next Tuesday at 1 pm.” Done.</p>
+      </div>
+      <!-- Card 6 -->
+      <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-brand-100 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
+          </div>
+          <h3 class="text-lg font-semibold">Exports that people use</h3>
+        </div>
+        <p class="mt-3 text-slate-600">One-click PDF for the wall, ICS for calendars, CSV for analytics, and an API for deeper integrations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="bg-slate-50 border-y border-slate-200">
+    <div class="mx-auto max-w-7xl px-6 py-20">
+      <div class="grid lg:grid-cols-3 gap-10 items-start">
+        <div class="lg:col-span-1">
+          <h2 class="text-3xl font-bold tracking-tight">How it works</h2>
+          <p class="mt-3 text-slate-600">From a blank slate to a publishable schedule in four steps.</p>
+        </div>
+        <div class="lg:col-span-2 grid sm:grid-cols-2 gap-6">
+          <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <p class="text-xs font-semibold text-brand-700">Step 1</p>
+            <h3 class="mt-1 font-semibold">Talk to set up</h3>
+            <p class="mt-2 text-slate-600">Name your division, roles, services, FTEs, and constraints. The assistant validates and summarizes back to you.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <p class="text-xs font-semibold text-brand-700">Step 2</p>
+            <h3 class="mt-1 font-semibold">Import history</h3>
+            <p class="mt-2 text-slate-600">Upload old schedules (QGenda, CSV, XLSX). We detect patterns and edge-case rules automatically.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <p class="text-xs font-semibold text-brand-700">Step 3</p>
+            <h3 class="mt-1 font-semibold">Generate & review</h3>
+            <p class="mt-2 text-slate-600">Create a draft with justifications and fairness tallies. Make edits by chat or directly on the grid.</p>
+          </div>
+          <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+            <p class="text-xs font-semibold text-brand-700">Step 4</p>
+            <h3 class="mt-1 font-semibold">Publish & notify</h3>
+            <p class="mt-2 text-slate-600">Push to calendars, email the team, and freeze versions with an audit trail for governance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section id="security" class="mx-auto max-w-7xl px-6 py-20">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight">Security by design</h2>
+        <p class="mt-3 text-slate-600">We follow a defense-in-depth approach aligned with health system best practices.</p>
+        <ul class="mt-6 space-y-3 text-slate-700 list-disc pl-5">
+          <li>HTTPS everywhere, HSTS, and secure headers</li>
+          <li>Azure AD and SSO-ready authentication</li>
+          <li>Secrets management and least-privilege access</li>
+          <li>Input validation and rate limiting</li>
+          <li>Automated backups and point-in-time restore</li>
+          <li>Role-based access control (RBAC) and audit logs</li>
+          <li>Monitoring, alerting, and anomaly detection</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <h3 class="font-semibold">Compliance posture</h3>
+        <p class="mt-2 text-slate-600">Designed to support HIPAA-aligned deployments on Azure. Business Associate Agreements (BAA) supported for enterprise customers.</p>
+        <div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+          <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
+            <p class="font-semibold">Data residency</p>
+            <p class="text-slate-600">US regions by default; EU/Canada on request.</p>
+          </div>
+          <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200">
+            <p class="font-semibold">PHI handling</p>
+            <p class="text-slate-600">No PHI in training data. Access is logged and scoped.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist / Contact -->
+  <section id="waitlist" class="bg-white border-y border-slate-200">
+    <div class="mx-auto max-w-3xl px-6 py-16">
+      <h2 class="text-3xl font-bold tracking-tight text-center">Get early access</h2>
+      <p class="mt-3 text-slate-600 text-center">We’re piloting with select departments. Join the waitlist and we’ll reach out.</p>
+      <form class="mt-8 grid gap-4 sm:grid-cols-2" action="https://formspree.io/f/your-endpoint" method="POST">
+        <div class="sm:col-span-1">
+          <label class="block text-sm font-medium text-slate-700">Name</label>
+          <input type="text" name="name" required class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-500 focus:ring-brand-500" placeholder="Alex Schevchuck" />
+        </div>
+        <div class="sm:col-span-1">
+          <label class="block text-sm font-medium text-slate-700">Email</label>
+          <input type="email" name="email" required class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-500 focus:ring-brand-500" placeholder="alex@example.edu" />
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium text-slate-700">Organization</label>
+          <input type="text" name="org" class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-500 focus:ring-brand-500" placeholder="UNM Health System" />
+        </div>
+        <div class="sm:col-span-2">
+          <label class="block text-sm font-medium text-slate-700">What are you scheduling?</label>
+          <textarea name="usecase" rows="3" class="mt-1 w-full rounded-xl border-slate-300 focus:border-brand-500 focus:ring-brand-500" placeholder="Cardiology faculty (FTE-based), fellows, and APPs; weekend call; ACHD clinic, etc."></textarea>
+        </div>
+        <div class="sm:col-span-2 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-2 text-xs text-slate-500">
+            <input type="checkbox" name="nda" id="nda" class="rounded border-slate-300" />
+            <label for="nda">Email me an NDA for enterprise pilot</label>
+          </div>
+          <button class="rounded-xl bg-brand-600 px-5 py-3 font-semibold text-white shadow-soft hover:bg-brand-700" type="submit">Join waitlist</button>
+        </div>
+      </form>
+      <p class="mt-4 text-center text-xs text-slate-500">Prefer email? <a href="#contact" class="underline">Contact us</a>.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="mx-auto max-w-7xl px-6 py-16">
+    <div class="grid lg:grid-cols-3 gap-10">
+      <div class="lg:col-span-1">
+        <h2 class="text-2xl font-bold tracking-tight">Contact</h2>
+        <p class="mt-3 text-slate-600">Have a pilot in mind or questions about migration? Reach out.</p>
+      </div>
+      <div class="lg:col-span-2 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
+        <dl class="grid sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
+          <div>
+            <dt class="font-medium text-slate-700">Email</dt>
+            <dd class="text-slate-600">hello@schedgenie.com</dd>
+          </div>
+          <div>
+            <dt class="font-medium text-slate-700">Location</dt>
+            <dd class="text-slate-600">Albuquerque, NM</dd>
+          </div>
+          <div>
+            <dt class="font-medium text-slate-700">Status</dt>
+            <dd class="text-slate-600">Private beta</dd>
+          </div>
+          <div>
+            <dt class="font-medium text-slate-700">Integrations</dt>
+            <dd class="text-slate-600">Azure AD, Outlook/ICS, CSV, API</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="mx-auto max-w-7xl px-6 py-10">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-slate-500">© <span id="year"></span> SchedGenie. All rights reserved.</p>
+        <div class="flex items-center gap-4 text-sm text-slate-500">
+          <a href="#" class="hover:text-slate-700">Privacy</a>
+          <a href="#" class="hover:text-slate-700">Terms</a>
+          <a href="#" class="hover:text-slate-700">Status</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
+    // Copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
